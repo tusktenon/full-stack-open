@@ -6,8 +6,12 @@ function Button({ handleClick, text }) {
 
 function Statistics({ good, neutral, bad }) {
   const all = good + neutral + bad
-  const average = all && (good - bad) / all
-  const positive = all && 100 * (good / all)
+  if (all === 0) {
+    return <p>No feedback given</p>
+  }
+
+  const average = (good - bad) / all
+  const positive = 100 * (good / all)
 
   return (
     <p>
