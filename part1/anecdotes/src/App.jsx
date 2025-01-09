@@ -20,7 +20,10 @@ function App() {
   const [votes, setVotes] = useState(Array(anecdotes.length).fill(0))
 
   const setRandom = () => {
-    const rand = Math.floor(Math.random() * anecdotes.length)
+    let rand = 0
+    do {
+      rand = Math.floor(Math.random() * anecdotes.length)
+    } while (rand === selected)
     setSelected(rand)
   }
 
