@@ -4,6 +4,14 @@ function Button({ handleClick, text }) {
   return <button onClick={handleClick}>{text}</button>
 }
 
+function StatisticsLine({ text, value }) {
+  return (
+    <>
+      {text}: {value} <br />
+    </>
+  )
+}
+
 function Statistics({ good, neutral, bad }) {
   const all = good + neutral + bad
   if (all === 0) {
@@ -15,12 +23,12 @@ function Statistics({ good, neutral, bad }) {
 
   return (
     <p>
-      good: {good} <br />
-      neutral: {neutral} <br />
-      bad: {bad} <br />
-      all: {all} <br />
-      average: {average.toFixed(3)} <br />
-      positive: {positive.toFixed(1)} %
+      <StatisticsLine text='good' value={good} />
+      <StatisticsLine text='neutral' value={neutral} />
+      <StatisticsLine text='bad' value={bad} />
+      <StatisticsLine text='all' value={all} />
+      <StatisticsLine text='average' value={average.toFixed(3)} />
+      <StatisticsLine text='positive' value={positive.toFixed(1) + ' %'} />
     </p>
   )
 }
