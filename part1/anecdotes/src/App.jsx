@@ -18,6 +18,7 @@ function App() {
 
   const [selected, setSelected] = useState(0)
   const [votes, setVotes] = useState(anecdotes.map(_ => 0))
+  const [mostVotes, setMostVotes] = useState(0)
 
   const setRandom = () => {
     let rand = 0
@@ -31,13 +32,11 @@ function App() {
     const cp = [...votes]
     cp[selected]++
     setVotes(cp)
-  }
 
-  const maxIndex = votes.reduce(
-    ([maxVotes, maxIndex], currVotes, currIndex) =>
-      currVotes > maxVotes ? [currVotes, currIndex] : [maxVotes, maxIndex],
-    [0, 0],
-  )[1]
+    if (cp[selected] > cp[mostVotes]) {
+      setMostVotes(selected)
+    }
+  }
 
   return (
     <>
@@ -48,7 +47,8 @@ function App() {
       <Button handleClick={setRandom} text='next anecdote' />
 
       <h1>Anecdote with most votes</h1>
-      <p>{anecdotes[maxIndex]}</p>
+      <p>{anecdotes[mostVotes]}</p>
+      <p>has {votes[mostVotes]} votes</p>
     </>
   )
 }
