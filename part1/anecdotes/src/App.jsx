@@ -17,15 +17,24 @@ function App() {
   ]
 
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState(Array(anecdotes.length).fill(0))
 
   const setRandom = () => {
     const rand = Math.floor(Math.random() * anecdotes.length)
     setSelected(rand)
   }
 
+  const recordVote = () => {
+    const cp = [...votes]
+    cp[selected]++
+    setVotes(cp)
+  }
+
   return (
     <>
       <p>{anecdotes[selected]}</p>
+      <p>has {votes[selected]} votes</p>
+      <Button handleClick={recordVote} text='vote' />
       <Button handleClick={setRandom} text='next anecdote' />
     </>
   )
