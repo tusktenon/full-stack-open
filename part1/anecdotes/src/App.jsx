@@ -17,7 +17,7 @@ function App() {
   ]
 
   const [selected, setSelected] = useState(0)
-  const [votes, setVotes] = useState(Array(anecdotes.length).fill(0))
+  const [votes, setVotes] = useState(anecdotes.map(_ => 0))
 
   const setRandom = () => {
     let rand = 0
