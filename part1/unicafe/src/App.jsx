@@ -4,14 +4,27 @@ function Button({ handleClick, text }) {
   return <button onClick={handleClick}>{text}</button>
 }
 
+function Statistics({ good, neutral, bad }) {
+  const all = good + neutral + bad
+  const average = all && (good - bad) / all
+  const positive = all && 100 * (good / all)
+
+  return (
+    <p>
+      good: {good} <br />
+      neutral: {neutral} <br />
+      bad: {bad} <br />
+      all: {all} <br />
+      average: {average.toFixed(3)} <br />
+      positive: {positive.toFixed(1)} %
+    </p>
+  )
+}
+
 function App() {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
-
-  const all = good + neutral + bad
-  const average = all && (good - bad) / all
-  const positive = all && 100 * (good / all)
 
   return (
     <>
@@ -24,14 +37,7 @@ function App() {
 
       <section>
         <h1>Statistics</h1>
-        <p>
-          good: {good} <br />
-          neutral: {neutral} <br />
-          bad: {bad} <br />
-          all: {all} <br />
-          average: {average.toFixed(3)} <br />
-          positive: {positive.toFixed(1)} %
-        </p>
+        <Statistics good={good} neutral={neutral} bad={bad} />
       </section>
     </>
   )
