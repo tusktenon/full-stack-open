@@ -6,9 +6,10 @@ function Button({ handleClick, text }) {
 
 function StatisticsLine({ text, value }) {
   return (
-    <>
-      {text}: {value} <br />
-    </>
+    <tr>
+      <td>{text}</td>
+      <td>{value}</td>
+    </tr>
   )
 }
 
@@ -22,14 +23,16 @@ function Statistics({ good, neutral, bad }) {
   const positive = 100 * (good / all)
 
   return (
-    <p>
-      <StatisticsLine text='good' value={good} />
-      <StatisticsLine text='neutral' value={neutral} />
-      <StatisticsLine text='bad' value={bad} />
-      <StatisticsLine text='all' value={all} />
-      <StatisticsLine text='average' value={average.toFixed(3)} />
-      <StatisticsLine text='positive' value={positive.toFixed(1) + ' %'} />
-    </p>
+    <table>
+      <tbody>
+        <StatisticsLine text='good' value={good} />
+        <StatisticsLine text='neutral' value={neutral} />
+        <StatisticsLine text='bad' value={bad} />
+        <StatisticsLine text='all' value={all} />
+        <StatisticsLine text='average' value={average.toFixed(3)} />
+        <StatisticsLine text='positive' value={positive.toFixed(1) + ' %'} />
+      </tbody>
+    </table>
   )
 }
 
