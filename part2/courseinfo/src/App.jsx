@@ -3,6 +3,7 @@ function Course({ course }) {
     <>
       <Header text={course.name} />
       <Content parts={course.parts} />
+      <Total parts={course.parts} />
     </>
   )
 }
@@ -29,6 +30,15 @@ function Part({ part }) {
   )
 }
 
+function Total({ parts }) {
+  const total = parts.reduce((acc, curr) => acc + curr.exercises, 0)
+  return (
+    <p>
+      <strong>Total of {total} exercises</strong>
+    </p>
+  )
+}
+
 function App() {
   const course = {
     id: 1,
@@ -48,6 +58,11 @@ function App() {
         name: 'State of a component',
         exercises: 14,
         id: 3,
+      },
+      {
+        name: 'Redux',
+        exercises: 11,
+        id: 4,
       },
     ],
   }
