@@ -1,53 +1,7 @@
 import { useState } from 'react'
-
-function Filter({ search, onChange }) {
-  return (
-    <div>
-      filter shown with <input value={search} onChange={onChange} />
-    </div>
-  )
-}
-
-function PersonForm({ name, onNameChange, number, onNumberChange, onSubmit }) {
-  return (
-    <form onSubmit={onSubmit}>
-      <div>
-        name: <input value={name} onChange={onNameChange} />
-      </div>
-      <div>
-        number: <input value={number} onChange={onNumberChange} />
-      </div>
-      <div>
-        <button type='submit'>add</button>
-      </div>
-    </form>
-  )
-}
-
-function Persons({ persons, search }) {
-  const personsToShow =
-    search.length === 0
-      ? persons
-      : persons.filter(person =>
-          person.name.toLowerCase().includes(search.toLowerCase()),
-        )
-
-  return (
-    <ul>
-      {personsToShow.map(person => (
-        <Person key={person.id} {...person} />
-      ))}
-    </ul>
-  )
-}
-
-function Person({ name, number }) {
-  return (
-    <li>
-      {name} {number}
-    </li>
-  )
-}
+import Filter from './components/Filter'
+import PersonForm from './components/PersonForm'
+import Persons from './components/Persons'
 
 function App(props) {
   const [persons, setPersons] = useState(props.persons)
