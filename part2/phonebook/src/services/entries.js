@@ -14,4 +14,10 @@ function remove(entry) {
   return axios.delete(`${baseURL}/${entry.id}`)
 }
 
-export default { getAll, create, remove }
+function update(entry, newNumber) {
+  return axios
+    .patch(`${baseURL}/${entry.id}`, { number: newNumber })
+    .then(response => response.data)
+}
+
+export default { getAll, create, remove, update }
