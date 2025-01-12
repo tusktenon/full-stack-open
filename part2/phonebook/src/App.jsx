@@ -10,10 +10,10 @@ function App() {
   const [newNumber, setNewNumber] = useState('')
   const [search, setSearch] = useState('')
 
+  const baseURL = 'http://localhost:3001/persons'
+
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/persons')
-      .then(response => setPersons(response.data))
+    axios.get(baseURL).then(response => setPersons(response.data))
   }, [])
 
   const addPerson = event => {
@@ -21,13 +21,9 @@ function App() {
     if (persons.some(person => person.name === newName)) {
       alert(`${newName} is already in the phonebook`)
     } else {
-      setPersons(
-        persons.concat({
-          name: newName,
-          number: newNumber,
-          id: persons.length + 1,
-        }),
-      )
+      axios
+        .post(baseURL, { name: newName, number: newNumber })
+        .then(response => setPersons(persons.concat(response.data)))
     }
     setNewName('')
     setNewNumber('')
