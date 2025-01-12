@@ -10,4 +10,8 @@ function create(newEntry) {
   return axios.post(baseURL, newEntry).then(response => response.data)
 }
 
-export default { getAll, create }
+function remove(entry) {
+  return axios.delete(`${baseURL}/${entry.id}`)
+}
+
+export default { getAll, create, remove }

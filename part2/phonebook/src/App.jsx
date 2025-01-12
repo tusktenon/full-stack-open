@@ -39,6 +39,14 @@ function App() {
     setSearch(event.target.value)
   }
 
+  const handleRemovalOf = person => {
+    if (confirm(`Delete ${person.name} ?`)) {
+      entryService
+        .remove(person)
+        .then(() => setPersons(persons.filter(p => p.id !== person.id)))
+    }
+  }
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -54,7 +62,7 @@ function App() {
       />
 
       <h3>Numbers</h3>
-      <Persons persons={persons} search={search} />
+      <Persons persons={persons} search={search} onRemove={handleRemovalOf} />
     </div>
   )
 }

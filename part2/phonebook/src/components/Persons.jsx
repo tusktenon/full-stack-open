@@ -1,4 +1,4 @@
-function Persons({ persons, search }) {
+function Persons({ persons, search, onRemove }) {
   const personsToShow =
     search.length === 0
       ? persons
@@ -9,16 +9,17 @@ function Persons({ persons, search }) {
   return (
     <ul>
       {personsToShow.map(person => (
-        <Person key={person.id} {...person} />
+        <Person key={person.id} person={person} onRemove={onRemove} />
       ))}
     </ul>
   )
 }
 
-function Person({ name, number }) {
+function Person({ person, onRemove }) {
   return (
     <li>
-      {name} {number}
+      {person.name} {person.number}{' '}
+      <button onClick={() => onRemove(person)}>delete</button>
     </li>
   )
 }
