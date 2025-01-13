@@ -22,18 +22,31 @@ function App() {
     if (existing) {
       const message = `${newName} is already in the phonebook. Replace the old number with a new one?`
       if (confirm(message)) {
-        entryService.update(existing, newNumber).then(updated => {
-          setPersons(persons.map(p => (p.id === existing.id ? updated : p)))
-          setNotification(`Updated number for ${newName}`)
-          setTimeout(() => setNotification(null), 3000)
-        })
+        entryService
+          .update(existing, newNumber)
+          .then(updated => {
+            setPersons(persons.map(p => (p.id === existing.id ? updated : p)))
+            setNotification({
+              message: `Updated number for ${newName}`,
+              style: 'info',
+            })
+            setTimeout(() => setNotification(null), 3000)
+          })
+          .catch(_ => {
+            setNotification({
+              message: `Entry for ${newName} has already been removed from the server`,
+              style: 'error',
+            })
+            setPersons(persons.filter(p => p.id !== existing.id))
+            setTimeout(() => setNotification(null), 3000)
+          })
       }
     } else {
       entryService
         .create({ name: newName, number: newNumber })
         .then(newEntry => {
           setPersons(persons.concat(newEntry))
-          setNotification(`Added ${newName}`)
+          setNotification({ message: `Added ${newName}`, style: 'info' })
           setTimeout(() => setNotification(null), 3000)
         })
     }
@@ -57,7 +70,7 @@ function App() {
     if (confirm(`Delete ${person.name} ?`)) {
       entryService.remove(person).then(() => {
         setPersons(persons.filter(p => p.id !== person.id))
-        setNotification(`Removed ${person.name}`)
+        setNotification({ message: `Removed ${person.name}`, style: 'info' })
         setTimeout(() => setNotification(null), 3000)
       })
     }
@@ -66,7 +79,10 @@ function App() {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message={notification} />
+      <Notification
+        message={notification?.message}
+        style={notification?.style}
+      />
       <Filter search={search} onChange={handleSearchChange} />
 
       <h3>Add new entry</h3>

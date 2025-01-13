@@ -1,6 +1,16 @@
-.notification {
-  color: #2E7D32;
-  background: #C8E6C9;
+.info {
+  color: #1b5e20;
+  background: #c8e6c9;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.error {
+  color: #b71c1c;
+  background: #ffcdd2;
   font-size: 20px;
   border-style: solid;
   border-radius: 5px;
