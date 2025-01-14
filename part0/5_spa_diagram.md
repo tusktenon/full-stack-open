@@ -1,4 +1,4 @@
-# Exercise 0.5: Singe page app diagram
+# Exercise 0.5: Single page app diagram
 
 ```mermaid
 sequenceDiagram

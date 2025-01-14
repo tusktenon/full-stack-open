@@ -1,4 +1,4 @@
-# Exercise 0.6: New new in single page app diagram
+# Exercise 0.6: New note in single page app diagram
 
 ```mermaid
 sequenceDiagram
