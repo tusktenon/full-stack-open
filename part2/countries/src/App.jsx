@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Results from './components/Results'
 
 function App() {
-  const [countries, setCountries] = useState([])
+  const [countries, setCountries] = useState(null)
   const [search, setSearch] = useState('')
   const [show, setShow] = useState(-1)
 

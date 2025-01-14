@@ -1,6 +1,10 @@
 import Country from './Country'
 
-function Results({ countries, search, show, onShow}) {
+function Results({ countries, search, show, onShow }) {
+  if (!countries) {
+    return <p>Fetching list of countries...</p>
+  }
+
   const results = countries
     .map((c, i) => ({ id: i, name: c.name.common }))
     .filter(country =>
