@@ -1,8 +1,9 @@
-# React + Vite
+# The Course Information Application (Part 2)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This [React](https://react.dev/) + [Vite](https://vite.dev/) app was built up as the solution to exercises [2.1 to 2.5](https://fullstackopen.com/en/part2/rendering_a_collection_modules#exercises-2-1-2-5) of the [Full Stack Open](https://fullstackopen.com/en/) MOOC from the University of Helsinki. It's the continuation of the `courseinfo` app from Part 1.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Running the application
+
+Simply enter `npm run dev` from the project's root directory. Vite will start the application at `http://localhost:5173/` (or the next free port number if 5173 is unavailable).
+

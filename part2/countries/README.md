@@ -1,4 +1,4 @@
-# The countries application
+# The Countries Application
 
 This [React](https://react.dev/) + [Vite](https://vite.dev/) app was built up as the solution to exercises [2.18, 2.19 and 2.20](https://fullstackopen.com/en/part2/adding_styles_to_react_app#exercises-2-18-2-20) of the [Full Stack Open](https://fullstackopen.com/en/) MOOC from the University of Helsinki.
 
