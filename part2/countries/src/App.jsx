@@ -5,6 +5,7 @@ import Results from './components/Results'
 function App() {
   const [countries, setCountries] = useState([])
   const [search, setSearch] = useState('')
+  const [show, setShow] = useState(-1)
 
   const baseURL = 'https://studies.cs.helsinki.fi/restcountries/api/'
 
@@ -17,14 +18,19 @@ function App() {
     })
   }, [])
 
-  const handleSearchChange = event => setSearch(event.target.value)
+  const handleSearchChange = event => {
+    setSearch(event.target.value)
+    setShow(-1)
+  }
+
+  const handleShow = index => setShow(index)
 
   return (
     <>
       <div>
         find countries: <input value={search} onChange={handleSearchChange} />
       </div>
-      <Results countries={countries} search={search} />
+      <Results countries={countries} search={search} show={show} onShow={handleShow} />
     </>
   )
 }

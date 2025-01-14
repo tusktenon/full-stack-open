@@ -1,11 +1,15 @@
 import Country from './Country'
 
-function Results({ countries, search }) {
+function Results({ countries, search, show, onShow}) {
   const results = countries
     .map((c, i) => ({ id: i, name: c.name.common }))
     .filter(country =>
       country.name.toLowerCase().includes(search.toLowerCase()),
     )
+
+  if (show >= 0) {
+    return <Country country={countries[show]} />
+  }
 
   if (results.length > 10) {
     return <p>Too many matches, specify another filter.</p>
@@ -15,7 +19,9 @@ function Results({ countries, search }) {
     return (
       <>
         {results.map(c => (
-          <p key={c.id}>{c.name}</p>
+          <p key={c.id}>
+            {c.name} <button onClick={() => onShow(c.id)}>show</button>
+          </p>
         ))}
       </>
     )
