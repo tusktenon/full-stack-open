@@ -28,8 +28,8 @@ function App() {
     setSearch(event.target.value)
   }
 
-  const displayNotification = (message, style = 'info') => {
-    setNotification({ message, style })
+  const displayNotification = (message, type = 'info') => {
+    setNotification({ message, type })
     setTimeout(() => setNotification(null), 3000)
   }
 
@@ -85,7 +85,7 @@ function App() {
       <h2>Phonebook</h2>
       <Notification
         message={notification?.message}
-        style={notification?.style}
+        type={notification?.type}
       />
       <Filter search={search} onChange={handleSearchChange} />
 
