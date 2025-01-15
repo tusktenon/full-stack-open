@@ -16,6 +16,11 @@ function App() {
     entryService.getAll().then(initialEntries => setPersons(initialEntries))
   }, [])
 
+  const displayNotification = (message, style = 'info') => {
+    setNotification({ message, style })
+    setTimeout(() => setNotification(null), 3000)
+  }
+
   const addPerson = event => {
     event.preventDefault()
     const existing = persons.find(person => person.name === newName)
@@ -26,19 +31,14 @@ function App() {
           .update(existing, newNumber)
           .then(updated => {
             setPersons(persons.map(p => (p.id === existing.id ? updated : p)))
-            setNotification({
-              message: `Updated number for ${newName}`,
-              style: 'info',
-            })
-            setTimeout(() => setNotification(null), 3000)
+            displayNotification(`Updated number for ${newName}`)
           })
-          .catch(_ => {
-            setNotification({
-              message: `Entry for ${newName} has already been removed from the server`,
-              style: 'error',
-            })
+          .catch(() => {
+            displayNotification(
+              `Entry for ${newName} has already been removed from the server`,
+              'error',
+            )
             setPersons(persons.filter(p => p.id !== existing.id))
-            setTimeout(() => setNotification(null), 3000)
           })
       }
     } else {
@@ -46,8 +46,7 @@ function App() {
         .create({ name: newName, number: newNumber })
         .then(newEntry => {
           setPersons(persons.concat(newEntry))
-          setNotification({ message: `Added ${newName}`, style: 'info' })
-          setTimeout(() => setNotification(null), 3000)
+          displayNotification(`Added ${newName}`)
         })
     }
     setNewName('')
@@ -70,8 +69,7 @@ function App() {
     if (confirm(`Delete ${person.name} ?`)) {
       entryService.remove(person).then(() => {
         setPersons(persons.filter(p => p.id !== person.id))
-        setNotification({ message: `Removed ${person.name}`, style: 'info' })
-        setTimeout(() => setNotification(null), 3000)
+        displayNotification(`Removed ${person.name}`)
       })
     }
   }
