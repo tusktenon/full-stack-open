@@ -7,6 +7,6 @@ This [React](https://react.dev/) + [Vite](https://vite.dev/) app was built up as
 
 You can start the app itself with the usual `npm run dev`.
 
-In Part 2 of the course, the app was configured to fetch the initial phonebook data (in [`db.json`](./db.json)) from a running instance of [json-server](https://github.com/typicode/json-server). This could still be done, but first the value of `baseURL` in [`services/entries.js`](./services/entries.js) would need to be changed from `http://localhost:3001/api/persons` to `http://localhost:3001/persons`. Start the server with `npm run server` (it's been configured to run on port 3001). 
+In Part 2 of the course, the app was configured to fetch the initial phonebook data (in [`db.json`](./db.json)) from a running instance of [json-server](https://github.com/typicode/json-server). This could still be done, but first the value of `baseURL` in [`services/entries.js`](./src/services/entries.js) would need to be changed from `http://localhost:3001/api/persons` to `http://localhost:3001/persons`. Start the server with `npm run server` (it's been configured to run on port 3001). 
 
-In Part 3 of the course, the app is configured to connect to the associated [backend server project]().
+In Part 3 of the course, the app is configured to connect to the associated [backend server project](https://github.com/tusktenon/full-stack-open-part-3).
