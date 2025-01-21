@@ -52,12 +52,21 @@ function App() {
           setPersons(persons.map(p => (p.id === person.id ? updated : p)))
           displayNotification(`Updated number for ${newName}`)
         })
-        .catch(() => {
-          displayNotification(
-            `Entry for ${newName} has already been removed from the server`,
-            'error',
-          )
-          setPersons(persons.filter(p => p.id !== person.id))
+        .catch(error => {
+          switch (error.status) {
+            case 400:
+              displayNotification(error.response.data.error, 'error')
+              break
+            case 404:
+              displayNotification(
+                `Entry for ${newName} has already been removed from the server`,
+                'error',
+              )
+              setPersons(persons.filter(p => p.id !== person.id))
+              break
+            default:
+              console.log(error.message)
+          }
         })
     }
   }
@@ -86,10 +95,7 @@ function App() {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification
-        message={notification?.message}
-        type={notification?.type}
-      />
+      <Notification message={notification?.message} type={notification?.type} />
       <Filter search={search} onChange={handleSearchChange} />
 
       <h3>Add new entry</h3>

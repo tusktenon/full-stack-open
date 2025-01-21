@@ -1,6 +1,6 @@
 # The Phonebook Application (frontend)
 
-This [React](https://react.dev/) + [Vite](https://vite.dev/) app was built up as the solution to exercises [2.6 to 2.10](https://fullstackopen.com/en/part2/forms#exercises-2-6-2-10), [2.11](https://fullstackopen.com/en/part2/getting_data_from_server#exercise-2-11), [2.12 to 2.15](https://fullstackopen.com/en/part2/altering_data_in_server#exercises-2-12-2-15), [3.9 and 3.11](https://fullstackopen.com/en/part3/deploying_app_to_internet#exercises-3-9-3-11) of the [Full Stack Open](https://fullstackopen.com/en/) MOOC from the University of Helsinki.
+This [React](https://react.dev/) + [Vite](https://vite.dev/) app was built up as the solution to exercises [2.6 to 2.10](https://fullstackopen.com/en/part2/forms#exercises-2-6-2-10), [2.11](https://fullstackopen.com/en/part2/getting_data_from_server#exercise-2-11), [2.12 to 2.15](https://fullstackopen.com/en/part2/altering_data_in_server#exercises-2-12-2-15), [3.9, 3.11](https://fullstackopen.com/en/part3/deploying_app_to_internet#exercises-3-9-3-11), [3.19 and 3.20](https://fullstackopen.com/en/part3/validation_and_es_lint#exercises-3-19-3-21) of the [Full Stack Open](https://fullstackopen.com/en/) MOOC from the University of Helsinki.
 
 
 ## Running the application in development mode.
