@@ -34,10 +34,13 @@ function App() {
   }
 
   const addPerson = () => {
-    entryService.create({ name: newName, number: newNumber }).then(newEntry => {
-      setPersons(persons.concat(newEntry))
-      displayNotification(`Added ${newName}`)
-    })
+    entryService
+      .create({ name: newName, number: newNumber })
+      .then(newEntry => {
+        setPersons(persons.concat(newEntry))
+        displayNotification(`Added ${newName}`)
+      })
+      .catch(error => displayNotification(error.response.data.error, 'error'))
   }
 
   const updatePerson = person => {
